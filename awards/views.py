@@ -168,7 +168,7 @@ def new_project(request):
             project = form.save(commit=False)
             project.username = current_user
             project.avatar = profile.avatar
-            # project.country = profile.country
+            project.country = profile.country
             project.save()
     else:
         form = ProjectForm()
