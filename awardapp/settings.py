@@ -1,6 +1,3 @@
-
-
-
 """
 Django settings for awardapp project.
 
@@ -30,7 +27,7 @@ SECRET_KEY = '12j_)8h&u7unfs2k2!)=t!1371lup!-+hhgye*7m5xq8w2=e6@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-ALLOWED_HOSTS = ['127.0.0.1','localhost']
+ALLOWED_HOSTS = []
 
 MODE=config("MODE", default="dev")
 SECRET_KEY = config('SECRET_KEY')
@@ -65,6 +62,8 @@ UPLOADCARE = {
     # ...
     'use_hosted_assets': False,
 }
+
+AUTH_PROFILE_MODULE = 'awwwards.Profile'
 
 # Application definition
 
@@ -173,8 +172,8 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 UPLOADCARE = {
-    'pub_key':'a915e71a9ef43ec684a7',
-    'secret':'ffd59c864fdf71a5ad6a'
+    'pub_key':'9e63eab2a657233440cd',
+    'secret':'55cf40a4cb9d4eba17f8'
 }
 
 # django_heroku.settings(locals())

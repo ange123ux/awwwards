@@ -18,7 +18,7 @@ def home(request):
     title = ' Home'
     projects = Project.get_all()
     winners=Project.objects.all()[:4]
-    caraousel = Project.objects.order_by('-overall_score')[0]
+    # caraousel = Project.objects.order_by('-overall_score')[0]
     nominees=Project.objects.all()[4:8]
     try:
         if not request.user.is_authenticated:
@@ -31,7 +31,7 @@ def home(request):
     return render(request, 'index.html',{
         'title': title,
         'projects':projects,
-        "winners":winners,"profile":profile,"caraousel":caraousel,"nominees":nominees,
+        # "winners":winners,"profile":profile,"caraousel":caraousel,"nominees":nominees,
     })
 def all_repos(request):
     title = 'Repos'
@@ -109,14 +109,15 @@ def site(request,site_id):
     return render(request,"site.html",{"project":project,"profile":profile,"ratings":ratings,"form":form})
 
 def user_profile(request,username):
+    profile = request.user.get_profile()
     current_user = request.user
-    profile =Profile.objects.get(User,username=current_user)
+    profile = Profile.objects.get(User,username=current_user)
     projects=Project.objects.filter(User,username=current_user)
 
     return render(request,'user-profile.html',{"projects":projects,"profile":profile})
 def profile(request):
     current_user = request.user
-    profile =Profile.objects.get(User,username=current_user)
+    profile =Profile.objects.get(User,username=current_user,),
     projects=Project.objects.filter(User,username=current_user)
 
     return render(request,'profile.html',{"projects":projects,"profile":profile})
@@ -167,7 +168,7 @@ def new_project(request):
             project = form.save(commit=False)
             project.username = current_user
             project.avatar = profile.avatar
-            project.country = profile.country
+            # project.country = profile.country
             project.save()
     else:
         form = ProjectForm()
